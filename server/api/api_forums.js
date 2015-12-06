@@ -2,19 +2,19 @@
  * Forums API
  *
  * @module api_forums
- * @return {Object}
+ * @return {Class}
  */
 
-module.exports = function(App) {
-  'use strict';
+'use strict';
 
-  var debug = require('debug')('api_forums');
+var debug = require('debug')('api_forums');
 
-  debug('exported');
+class forums {
 
-  var forums = {
+  constructor() {
+    debug('exported');
+  }
 
-  };
-
-  return forums;
 };
+
+module.exports = forums;

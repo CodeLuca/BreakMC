@@ -2,10 +2,10 @@
 
 'use strict';
 
-var App = App || {},
-    bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
+global.App = {};
 
-process.env.DEBUG = 'index, api_routes, app_routes, api_forums';
+process.env.DEBUG = 'index, api_routes, app_routes, api_forums, api_class, api_user';
 
 var debug = require('debug')('index'),
     expressHbs = require('express-handlebars');
@@ -63,7 +63,11 @@ debug('db initialised.');
 
 /** Initialise APIs */
 App.api = App.api || {};
-App.api.auth = require('./server/api/api_forums.js')(App);
+App.api.user = require('./server/api/api_user.js');
+App.api.user = new App.api.user();
+
+App.api.forums = require('./server/api/api_forums.js');
+App.api.forums = new App.api.forums();
 
 /** Initialise routes */
 require('./server/routes/app_routes.js')(App);
@@ -74,7 +78,7 @@ debug('routes required');
  * Configure sessions.
  */
 App.Express.use(App.Sessions({
-  secret: 'wowtoZJVxpdk5736=99',
+  secret: 'wowtoZJVxpdk5736=99',  
   name: 'id',
   genid: function(req) {
     return App.shortid.generate();
