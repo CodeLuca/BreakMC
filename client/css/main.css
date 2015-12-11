@@ -186,8 +186,20 @@ hr {
   justify-content: center;
 }
 
+.adminUserPanelContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .largeProfilePic {
   border: 0.3em solid #242F3F;
   width: 150px;
   height: 150px
+}
+
+.testDiv {
+  align-self: flex-start;
+  flex-grow: 1;
 }

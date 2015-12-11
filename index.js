@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 global.App = {};
 
 // TODO: put this in config.
-process.env.DEBUG = 'index, api_routes, app_routes, api_forums, api_class, api_user, api_utils';
+process.env.DEBUG = 'index, ticket_routes, app_routes, api_forums, api_class, api_user, api_utils, api_auth, adminpanel_routes';
 
 var debug = require('debug')('index'),
     expressHbs = require('express-handlebars');
@@ -104,7 +104,8 @@ App.api.utils = new App.api.utils();
 
 /** Initialise routes */
 require('./server/routes/app_routes.js')(App);
-require('./server/routes/api_routes.js')(App);
+require('./server/routes/ticket_routes.js')(App);
+require('./server/routes/api_adminpanel.js')(App);
 debug('routes required');
 
 /** Set the view engine used to parse templates and views */

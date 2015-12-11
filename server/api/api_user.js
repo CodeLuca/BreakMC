@@ -192,5 +192,28 @@ class user {
       })
     });
   }
+
+  /**
+   * User Threads.
+   *
+   * @func isExist
+   * @param {string} username
+   * @return {boolean} If the user exists.
+   */
+  findThreads(username) {
+    debug('finding ' + username + ' threads');
+
+    return new Promise(function(resolve, reject) {
+      App.db.threads.find({
+        'user': username
+      }, function(err, docs) {
+        if(!err) {
+          resolve(docs);
+        } else {
+          reject(new Error(err));
+        }
+      });
+    });
+  }
 };
 module.exports = user;

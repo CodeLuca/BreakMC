@@ -87,12 +87,13 @@ class auth {
    * @param {String}
    * @return {boolean}
    */
-  isAdmin(user) {
+  isAdmin(user, bool) {
     debug('checking if user is admin');
 
     // Return ES6 Promise
     return new Promise(function(resolve, reject) {
       App.db.users.find({
+        'username': user,
         'admin': true
       }, function(err, docs) {
 
@@ -100,12 +101,21 @@ class auth {
           reject(new Error(err));
         }
 
-        if(docs) {
-          resolve(true);
-        } else {
-          resolve(false);
+        if(bool) {
+          if(docs[0]) {
+            resolve(true);
+          } else {
+            resolve(false);
+          }
         }
 
+        if(!bool) {
+          if(docs[0]) {
+            resolve(user + ' is an admin');
+          } else {
+            resolve(user + ' is not an admin');
+          }
+        }
       });
     });
   }
@@ -127,7 +137,32 @@ class auth {
         }
       }, function(err, docs) {
         if(!err) {
-          resolve(true);
+          resolve(user + ' is now an admin');
+        } else {
+          reject(new Error(err));
+        }
+      });
+    });
+  }
+
+  /**
+   * @func makeDeafult
+   * @param {String}
+   */
+  makeDefault(user) {
+    debug('changing user perms');
+
+    // Return ES6 Promise
+    return new Promise(function(resolve, reject) {
+      App.db.users.update({
+        'username': user
+      }, {
+        $set: {
+          'admin': false
+        }
+      }, function(err, docs) {
+        if(!err) {
+          resolve(user + ' is now a default user');
         } else {
           reject(new Error(err));
         }
@@ -170,7 +205,7 @@ class auth {
         if(err) {
           reject(new Error(err));
         } else {
-          resolve(true);
+          resolve('The thread with id: ' + id + ' has now been removed.');
         }
       });
     });

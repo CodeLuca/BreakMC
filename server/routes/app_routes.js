@@ -11,16 +11,6 @@ module.exports = function(App) {
   
   debug('exported');
 
-  /*
-  TODO: Use correct routes for below.
-  App.Express.use(['/tickets', '/apps', '/forum/create'], function(req, res, next) {
-    if (!req.session.username) {
-      res.redirect('/');
-    } else {
-      next();
-    }
-  }); */
-
   // Check if user is logged in
   App.Express.use('*', function(req, res, next) {
     if(!req.session.username) {
@@ -298,24 +288,37 @@ module.exports = function(App) {
       res.redirect('/register');
       return;
     }
-    App.api.user.read({
-      'username': req.session.username
-    }).then(function(profile) {
-      if(profile != null) {
-        App.db.threads.find({
-          'user': req.session.username
-        }, function(err, docs) {
-          res.render('profile', {
-            'auth_type': req.auth_type,
-            'profile': profile[0],
-            'threads': docs
-          });
+    Promise.all([
+      App.api.auth.isAdmin(
+        req.session.username,
+        true
+      ),
+      App.api.user.read({
+        'username': req.session.username
+      }),
+      App.api.user.findThreads(
+        req.session.username
+      )
+    ]).then(function(docs) {
+      debug(docs[2])
+      if(docs[0] == true) {
+        res.render('profile', {
+          'auth_type': req.auth_type,
+          'profile': docs[1][0],
+          'threads': docs[2],
+          'admin': true
         });
       } else {
-        res.send(404);
+        res.render('profile', {
+          'auth_type': req.auth_type,
+          'profile': docs[1][0],
+          'threads': docs[2],
+          'admin': false
+        });
       }
     }, function(err) {
-      res.redirect('/');
+      debug(err);
+      res.redirect('/register');
     });
   });
 
@@ -348,7 +351,7 @@ module.exports = function(App) {
       res.redirect('/');
       return;
     }
-    App.api.auth.isAdmin(req.session.username)
+    App.api.auth.isAdmin(req.session.username, true)
       .then(function(allowed) {
         if(allowed == true) {
           res.render('admin_panel', {

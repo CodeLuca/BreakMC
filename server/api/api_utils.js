@@ -42,6 +42,21 @@ class utils {
       );  
     });
   }
+
+  // Get Tickets
+  getTickets(query) {
+    debug('getting tickets.');
+
+    return new Promise(function(resolve, reject) {
+      App.db.tickets.find(query, function(err, docs) {
+        if(!err) {
+          resolve(docs);
+        } else {
+          reject(err);
+        }
+      });
+    });
+  }
 };
 
 module.exports = utils;

@@ -3,13 +3,52 @@
   <p>Hello Admins! From here you can control the whole of the site. Please use your powers wisely :)</p>
 </div>
 
-<form action="" method="POST" role="form">
-  <legend>Form title</legend>
+{{#if response}}
+  <h1>{{response}}</h1>
+  <br>
+{{/if}}
 
-  <div class="form-group">
-    <label for="">label</label>
-    <input type="text" class="form-control" id="" placeholder="Input field">
-  </div>
+<div class='adminUserPanelContainer'>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <legend>Admin Panel</legend>
+
+  <form action="/admin/admin/check" method="POST" class="form-inline" role="form">
+    <div class="form-group">
+      <label for="">Check if User is Admin</label><br>
+      <input type="text" class="form-control" id="" placeholder="Username" name='username' autocomplete='off'>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>  
+  </form>
+
+  <form action="/admin/admin/make" method="POST" class="form-inline" role="form">
+    <div class="form-group">
+      <label for="">Make user Admin</label><br>
+      <input type="text" class="form-control" id="" placeholder="Username" name='username' autocomplete='off'>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>  
+  </form>
+
+  <form action="/admin/admin/remove" method="POST" class="form-inline" role="form">
+    <div class="form-group">
+      <label for="">Remove Admin Privileges</label><br>
+      <input type="text" class="form-control" id="" placeholder="Username" name='username' autocomplete='off'>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>  
+  </form>
+</div>
+
+<br>
+<br>
+
+<div class='adminUserPanelContainer'>
+
+  <legend>Forum Panel</legend>
+
+  <form action="/admin/forum/remove" method="POST" class="form-inline" role="form">
+    <div class="form-group">
+      <label for="">Remove Thread</label><br>
+      <input type="text" class="form-control" id="" placeholder="Thread ID" name='id' autocomplete='off'>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>  
+  </form>
+</div>
