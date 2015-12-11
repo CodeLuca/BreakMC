@@ -5,7 +5,8 @@
 var bodyParser = require('body-parser');
 global.App = {};
 
-process.env.DEBUG = 'index, api_routes, app_routes, api_forums, api_class, api_user';
+// TODO: put this in config.
+process.env.DEBUG = 'index, api_routes, app_routes, api_forums, api_class, api_user, api_utils';
 
 var debug = require('debug')('index'),
     expressHbs = require('express-handlebars');
@@ -61,19 +62,6 @@ debug('config initialised');
 App.db = require('mongojs')(App.config.db_path, App.config.db_collections);
 debug('db initialised.');
 
-/** Initialise APIs */
-App.api = App.api || {};
-App.api.user = require('./server/api/api_user.js');
-App.api.user = new App.api.user();
-
-App.api.forums = require('./server/api/api_forums.js');
-App.api.forums = new App.api.forums();
-
-/** Initialise routes */
-require('./server/routes/app_routes.js')(App);
-require('./server/routes/api_routes.js')(App);
-debug('routes required');
-
 /**
  * Configure sessions.
  */
@@ -92,8 +80,36 @@ App.Express.use(App.Sessions({
 }));
 debug('sessions configured.');
 
+/**
+ * Mount body-parser middleware
+ * @todo Review code. This code is legacy which has been brought in from previous projects.
+ */
+App.Express.use(bodyParser.urlencoded({extended: false}));
+App.Express.use(bodyParser.json('application/json'));
+debug('bodyParser middleware mounted.');
+
+/** Initialise APIs */
+App.api = App.api || {};
+App.api.user = require('./server/api/api_user.js');
+App.api.user = new App.api.user();
+
+App.api.auth = require('./server/api/api_auth.js');
+App.api.auth = new App.api.auth();
+
+App.api.forums = require('./server/api/api_forums.js');
+App.api.forums = new App.api.forums();
+
+App.api.utils = require('./server/api/api_utils.js');
+App.api.utils = new App.api.utils();
+
+/** Initialise routes */
+require('./server/routes/app_routes.js')(App);
+require('./server/routes/api_routes.js')(App);
+debug('routes required');
+
 /** Set the view engine used to parse templates and views */
-App.Express.engine('hbs', expressHbs({extname:'hbs', defaultLayout:'main.hbs'}));
+App.Express.set('views', __dirname + '/client/views');
+App.Express.engine('hbs', expressHbs({extname:'hbs', defaultLayout: __dirname + '/client/views/layouts/main.hbs'}));
 App.Express.set('view engine', 'hbs');
 debug('view engine set.');
 

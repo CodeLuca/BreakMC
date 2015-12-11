@@ -1,0 +1,39 @@
+<div class='viewPostTitleContainer'>
+  <img src="https://minotar.net/avatar/{{post.user}}" alt="Luca" style='display: inline-block;margin-top: 24px;'/>
+  <div class='postTitle'>
+    <h1>{{post.title}}</h1>
+    <p style='margin-top: -7px;'>{{post.user}}</p>
+  </div>
+  <div class='counter'>
+    <h1 style='text-align: center;'>{{post.views}}</h1><p class='counterType'>views</p>
+  </div>
+
+  <div class='counter'>
+    <h1 style='text-align: center;'>{{post.replies.length}}</h1><p class='counterType'>replies</p>
+  </div>
+
+</div>
+
+<hr>
+
+<div class='viewPostContentContainer'>
+  <p>{{post.body}}</p>
+</div>
+
+<div class='repliesContainer'>
+{{#each post.replies}}
+  <div style='margin-top: 20px;'>
+    <img src="https://minotar.net/avatar/{{user}}" alt="Luca" style='width:25px;height:25px;'/>
+    <b>{{user}}</b>: {{body}}
+  </div>
+{{/each}}
+</div>
+
+<br><br>
+
+<form action="/forum/reply/{{post.id}}" method="POST" role="form">
+  <div class="form-group">
+    <textarea name="body" id="input" class="form-control" rows="3" required="required" placeholder='Reply to this thread.' style='resize: none;'></textarea>
+  </div>
+  <button type="submit" class="btn btn-sm btn-default" style='background: #455B7A; border: none;'>Submit</button>
+</form>

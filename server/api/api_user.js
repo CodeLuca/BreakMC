@@ -7,7 +7,7 @@
 
 'use strict';
 
-var debug = require('debug')('api_user');
+let debug = require('debug')('api_user');
 
 class user {
 
@@ -164,11 +164,13 @@ class user {
   isExist(username) {
     debug('checking if user exists.');
 
+    let self = this;
+
     return new Promise(function(resolve, reject) {
 
-      exists = false;
+      let exists = false;
 
-      this.read({
+      self.read({
         'username': username
       })
       .then(function(docs) {
@@ -179,6 +181,7 @@ class user {
 
         } else {
           debug('user does not exist.');
+          exists = false;
         }
 
         resolve(exists);

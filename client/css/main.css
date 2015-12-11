@@ -1,0 +1,193 @@
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #2B8067;
+}
+
+.jumbotron {
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url(bg.png) repeat 0 0, url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.6)), color-stop(100%, rgba(255, 255, 255, 0.6))), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* Forms */
+
+#registrationForm {
+    display: inline-block;
+    width: 40%;
+    margin-right: 10%;
+}
+
+#loginForm {
+    display: inline-block;
+    width: 40%;
+}
+
+@media (max-width: 975px) {
+    #registrationForm {
+        margin-bottom: 50px;
+        display: block;
+        width: 100%;
+    }
+    #loginForm {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .table-forum tr td.table-forum--latest {
+        display: none;
+    }
+}
+
+
+/* Forum buttom */
+
+.newThread {
+    z-index: 2;
+    margin-bottom: 50px;
+    position: fixed;
+    bottom: 0;
+}
+
+
+/*Table stuff*/
+
+.table-forum {
+    /* optional styles */
+}
+
+.table-forum tr {
+    margin: 12px 0;
+    display: block;
+}
+
+.table-forum tr td {
+    border-top: none !important;
+    padding: 0 inherit;
+    vertical-align: middle !important;
+}
+
+
+/* Now we'll style each idividual td */
+
+.table-forum tr td.table-forum--icon {
+    width: 60px;
+    padding-left: 0;
+}
+
+img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.table-forum tr td.table-forum--title.forum_cat {
+  width: 60%;
+}
+
+.table-forum tr td.table-forum--title .thread-title {
+    font-size: 20px;
+}
+
+.table-forum tr td.table-forum--replies,
+.table-forum tr td.table-forum--views {
+    text-align: center;
+    width: 10%;
+}
+
+.table-forum tr td.table-forum--replies .count,
+.table-forum tr td.table-forum--views .count {
+    font-size: 20px;
+}
+
+.table-forum tr td.table-forum--latest {
+    width: 27.5%;
+    padding-left: 2.5%;
+    font-size: 12px;
+    border-left: 4px solid #ff6600;
+}
+
+.table-forum tr td.table-forum--latest .icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.table-forum tr td.table-forum--latest a {
+    color: #aaa;
+    margin-bottom: 4px;
+    display: inline-block;
+}
+
+.table-forum tr td.table-forum--latest p {
+    margin: 0;
+}
+
+.light {
+    font-weight: 300;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+/* other */
+
+@media (max-width: 600px) {
+  .counter {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.postTitle {
+  flex-grow: 1;
+    width: 50%;
+    margin-left: 20px;
+}
+
+.counter {
+    width: 100px;
+}
+
+.counterType {
+  margin-top: -10px; text-align: center;
+}
+
+hr {
+  width: 90%;
+  border: 0;
+  border-top: 0.15em solid #242F3F;
+}
+
+.viewPostTitleContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.viewPostContentContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.largeProfilePic {
+  border: 0.3em solid #242F3F;
+  width: 150px;
+  height: 150px
+}

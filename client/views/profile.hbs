@@ -1,0 +1,54 @@
+<div class='profileContainer'>
+  <center>
+    <img src="https://minotar.net/avatar/{{profile.username}}" alt="Profile" class='largeProfilePic' />
+    <h1>{{profile.username}}</h1>
+    <p style='color: #808080'>Joined: {{profile.date}}</p>
+  </center>
+</div>
+
+<table class="table table-forum">
+
+  {{#if threads}}
+    <h2>Threads created by {{profile.username}}:</h2>
+  {{/if}}
+
+  {{#unless threads}}
+    <h2>There are no threads here yet...</h2>
+  {{/unless}}
+
+  <tbody>
+    {{#each threads}}
+      <!--Thread-->
+      <tr>
+        <!--Icon-->
+        <td class="table-forum--icon">
+          <img src="https://minotar.net/avatar/{{user}}" alt="Luca" />
+        </td>
+        <!--Thread-->
+        <td class="table-forum--title forum_cat">
+          <a href="/forum/view/{{id}}" class="thread-title">{{titleSnippet}}</a>
+          <span class="ago clearfix">{{user}}</span>
+        </td>
+        <!--No. of Replies-->
+        <td class="table-forum--replies">
+          <span class="count">{{replies.length}}</span>
+          <span class="light clearfix">Replies</span>
+        </td>
+        <!--No. of Views-->
+        <td class="table-forum--views">
+          <span class="count">{{views}}</span>
+          <span class="light clearfix">Views</span>
+        </td>
+        <!--Latest Reply-->
+        <td class="table-forum--latest">
+          <a href="/post/{{id}}">
+            <img src="https://minotar.net/avatar/{{user}}" alt="Luca" class="icon" />
+            <span class="time">{{time}}</span>
+          </a>
+          <p>{{snippet}}</p>
+        </td>
+      </tr>
+      <!--Thread-->
+    {{/each}}
+  </tbody>
+</table>

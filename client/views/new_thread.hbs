@@ -1,0 +1,29 @@
+<div class="jumbotron" style=''>
+  <h1>New Thread</h1>
+  <p>Feel free to make a thread about anything on topic to the server. Please do not discuss other servers on this site, thanks!</p>
+</div>
+
+<form action="/forum/new" method="POST" role="form">
+
+  <div class="form-group">
+    <label for="threadTitle">Thread Title</label>
+    <input type="text" class="form-control" id="threadTitle" autocomplete='off' name='title'>
+  </div>
+
+  <label for="threadContent">Thread Content</label>
+  <textarea name='body' class="form-control" id="threadContent" style="margin: 0px -3.84375px 0px 0px; width: 100%; height: 400px; resize: none;"></textarea>
+  
+  <br>
+
+  <label for='cat'>Category:</label>
+  <select class="form-control" id="cat" name='category'>
+    <option>Media</option>
+    <option>Suggestions</option>
+    <option>AdvancedPvP</option>
+    <option>Other</option>
+  </select>
+
+  <br>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

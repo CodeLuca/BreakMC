@@ -1,0 +1,40 @@
+
+<div class="jumbotron" style=''>
+  <h1>Register or Login</h1>
+  <p>Register in order to make tickets as well as post threads on the new BreakMC forums!</p>
+</div>
+
+<h2 style='color: #B10012; text-align: center;'>{{err}}</h2>
+
+<form action="/register" method="POST" role="form" id='registrationForm'>
+  <legend>Register</legend>
+
+  <div class="form-group">
+    <input type="text" class="form-control" id="username" placeholder="Username" name="username" autocomplete='off'>
+
+    <br>
+
+    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+  </div>
+
+  
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<form action="/login" method="POST" role="form" id='loginForm'>
+  <legend>Login</legend>
+
+  <div class="form-group">
+  <div class="form-group">
+    <input type="text" class="form-control" id="username" placeholder="Username" name="username" autocomplete='off'>
+
+    <br>
+
+    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+  </div>
+
+  
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
