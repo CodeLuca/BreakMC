@@ -1,0 +1,38 @@
+<div class='jumbotron view_ticket'>
+  <h1>{{ticket.user}}'s {{ticket.type}} Ticket:</h1>
+  <ul>
+    <li><b>Date: </b> {{ticket.date}}</li>
+    <li><b>Status: </b> {{ticket.status}}</li>
+    <li><b>Ticket ID: </b> {{ticket.id}}</li>
+  </ul>
+</div>
+
+<br>
+
+<div class='view_xray no_display'>
+  {{ticket.type}}
+</div>
+
+<div class='view_youtube no_display'>
+  {{ticket.type}}
+</div>
+
+<div class='view_mod no_display'>
+  {{ticket.type}}
+</div>
+
+<script type="text/javascript">
+    var type = '{{ticket.type}}';
+    switch(type) {
+      case 'xray':
+        $('.view_xray').show()
+        break;
+      case 'youtube':
+        $('.view_youtube').show()
+        break;
+      case 'moderator':
+        $('.view_mod').show()
+        break;
+    }
+    console.log(type);
+</script>

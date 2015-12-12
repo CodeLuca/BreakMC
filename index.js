@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 global.App = {};
 
 // TODO: put this in config.
-process.env.DEBUG = 'index, ticket_routes, app_routes, api_forums, api_class, api_user, api_utils, api_auth, adminpanel_routes';
+process.env.DEBUG = 'index, ticket_routes, app_routes, api_forums, api_class, api_user, api_utils, api_auth, adminpanel_routes, api_tickets';
 
 var debug = require('debug')('index'),
     expressHbs = require('express-handlebars');
@@ -101,6 +101,9 @@ App.api.forums = new App.api.forums();
 
 App.api.utils = require('./server/api/api_utils.js');
 App.api.utils = new App.api.utils();
+
+App.api.tickets = require('./server/api/api_tickets.js');
+App.api.tickets = new App.api.tickets();
 
 /** Initialise routes */
 require('./server/routes/app_routes.js')(App);

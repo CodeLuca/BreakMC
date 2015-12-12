@@ -4,32 +4,32 @@
   <p>Reply to people's tickets admins. Make sure to give detailed replies and solve their tickets as soon as possible!</p>
 </div>
 
-<table class="table table-forum tickets">
-  {{#unless tickets}}
-    <h2>There are no tickets here yet...</h2>
-  {{/unless}}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Replies</th>
+    </tr>
+  </thead>
   <tbody>
     {{#each tickets}}
-      <!--Thread-->
-      <tr>
-        <div class='testDiv'>
-          <!--Icon-->
-          <td class="table-forum--icon">
-            <img src="https://minotar.net/avatar/{{user}}" alt="Luca" />
-          </td>
-
-          <!--Thread-->
-          <td class="table-forum--title forum_cat">
-            <a href="/forum/view/{{id}}" class="thread-title">{{title}}</a>
-            <span class="ago clearfix">{{user}}</span>
-          </td>
-        </div>
-        <!--No. of Replies-->
-        <td class="table-forum--replies">
-          <span class="count">{{replies.length}}</span>
-          <span class="light clearfix">Replies</span>
+      {{#if replies}}
+        <tr class='ticketTable warning' onclick='document.location = "/tickets/view/{{id}}"'>
+      {{else}}
+        <tr class='ticketTable danger' onclick='document.location = "/tickets/view/{{id}}"'>
+      {{/if}}
+        <td>
+          <img src="https://minotar.net/avatar/{{user}}" alt="Luca" style='width:25px;height:25px;padding-right: 2px;'/>
+          <a href='/profile/{{user}}'>{{user}}</a>
         </td>
-      <!--Thread-->
+        <td>{{type}}</td>
+        <td>{{date}}</td>
+        <td>{{status}}</td>
+        <td>{{replies.length}}</td>
+      </tr>
     {{/each}}
   </tbody>
 </table>

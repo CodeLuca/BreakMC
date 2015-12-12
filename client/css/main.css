@@ -193,13 +193,33 @@ hr {
   justify-content: space-around;
 }
 
+.viewTicketContainer {
+  width: 100%;
+  border-radius: 10px;
+  padding: 15px;
+  padding-left: 30px;
+  padding-top: 0.1em;
+  background: #E6E6E6;
+}
+
 .largeProfilePic {
   border: 0.3em solid #242F3F;
   width: 150px;
   height: 150px
 }
 
-.testDiv {
-  align-self: flex-start;
-  flex-grow: 1;
+.ticket {
+  display: none;
+}
+
+.ticketTable {
+  cursor: pointer;
+}
+
+.view_ticket li {
+  font-size: 25px;
+}
+
+.no_display {
+  display: none;
 }

@@ -1,0 +1,78 @@
+<div class="jumbotron" style=''>
+  <h1>New Ticket</h1>
+  <p>BreakMC uses the ticket system for xray reports, applications and more! Go ahead and make a ticket if you need any help with anything.</p>
+</div>
+
+<form action='' method='post'>
+  <label for='ticketType'>Type:</label>
+  <select class="form-control" id="ticketType" name='type'>
+    <option value='select_type'>Select a Type</option>
+    <option value='xray'>Xray</option>
+    <option value='youtube'>YouTube Application</option>
+    <option value='moderator'>Moderator Application</option>
+  </select>
+ 
+  <br>
+
+  <div class='select_type'></div>
+
+  <div class="ticket xray">
+    <form action="" method="POST" role="form">
+      <legend>Xray Ticket</legend>
+    
+      <div class="form-group">
+
+        <label for="world">World: </label>
+          <select name="world" id='world' class='form-control form-inline'>
+            <option value="Overworld">Overworld</option>
+            <option value="Nether">Nether</option>
+            <option value="End">End</option>
+          </select>
+          
+          <br><br>
+
+          <label for='coords'>Coordinates: </label>
+          <div class="coords form-group form-inline" id='coords'>
+              X:  <input class='form-control' type="number" name="x" min="-10000" max="10000"> 
+              Y:  <input class='form-control' type="number" name="y" min="0" max="265"> 
+              Z:  <input class='form-control' type="number" name="z" min="-10000" max="10000"> 
+          </div>
+
+          <br><br>
+
+          <label for='playersWithAccess'>Players with access to warp: </label>
+          <input type="text" name="playersWithAccess" class="form-control" required="required" >
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <div class="ticket youtube">
+    <form action="" method="POST" role="form">
+      <legend>YouTube Application</legend>
+    
+      <div class="form-group">
+        <label for="">label</label>
+        <input type="text" class="form-control" id="" placeholder="Input field">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <div class="ticket moderator">
+    <form action="" method="POST" role="form">
+      <legend>Moderator Application</legend>
+    
+      <div class="form-group">
+        <label for="">label</label>
+        <input type="text" class="form-control" id="" placeholder="Input field">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+<!-- Scripts -->
+<script type="text/javascript" src='/js/new_ticket.js'></script>
