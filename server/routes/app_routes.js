@@ -178,7 +178,7 @@ module.exports = function(App) {
     if(mm<10){
         mm='0'+mm
     } 
-    let date = dd+'/'+mm+'/'+yyyy;
+    let date = mm+'/'+dd+'/'+yyyy;
 
     // Insert into db
     App.db.threads.insert({
@@ -214,7 +214,7 @@ module.exports = function(App) {
             'auth_type': req.auth_type,
             'threads': docs.reverse(),
             'auth_bool': req.auth_bool,
-            helpers: {
+            'helpers': {
               last: function(array) {
                 return array[array.length - 1];
               }
