@@ -1,0 +1,21 @@
+<div class="jumbotron" style=''>
+  <h1>Staff</h1>
+  <p>These staff work tirelessly to deliver a great experience for all our players. If you see them in game, make sure to thank them for their hard work!</p>
+</div>
+
+{{#each ranks}}
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{rank}}</h3>
+    </div>
+    <div class="panel-body staffContainer">
+      {{#each staff}}
+        <div class='staff'>
+          <b>{{user}}</b>
+          <br>
+          <img src="https://mcapi.ca/avatar/2d/{{user}}" alt="Profile" style='width: 100px; height: 100px;' />
+        </div>
+      {{/each}}
+    </div>
+  </div>
+{{/each}}

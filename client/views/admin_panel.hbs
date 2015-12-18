@@ -41,7 +41,6 @@
 <br>
 
 <div class='adminUserPanelContainer'>
-
   <legend>Forum Panel</legend>
 
   <form action="/admin/forum/remove" method="POST" class="form-inline" role="form">
@@ -51,4 +50,52 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </div>  
   </form>
+
+  <form action="/admin/forum/setid" method="POST" class="form-inline" role="form">
+    <div class="form-group">
+      <label for="">Change Thread ID</label><br>
+      <input type="text" class="form-control" id="" placeholder="Old ID" name='oldID' autocomplete='off'>
+      <input type="text" class="form-control" id="" placeholder="New ID" name='newID' autocomplete='off'>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>  
+  </form>
 </div>
+
+<br>
+<br>
+
+<div class='adminUserPanelContainer'>
+  <legend>Staff Page Panel</legend>
+
+  <form action="/admin/staff/set" method="POST" class="form-inline" role="form">
+    <div class="form-group">
+      <label for="">Add Staff Member</label><br>
+      <input type="text" class="form-control" id="" placeholder="Username" name='user' autocomplete='off'>
+      <input type="text" class="form-control" id="" placeholder="Rank" name='rank' autocomplete='off'>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+  <form action="/admin/staff/remove" method="POST" class="form-inline" role="form">
+    <div class="form-group">
+      <label for="">Remove Staff Member</label><br>
+      <input type="text" class="form-control" id="" placeholder="Username" name='user' autocomplete='off'>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+
+<br><br>
+
+<legend>Add new Update</legend>
+
+<form action="/admin/updates/add" method="POST" role="form">
+  <div class="form-group">
+    <label for="">Title</label><br>
+    <input type="text" name="title" id="input" class="form-control"><br>
+
+    <label for="">Content</label><br>
+    <textarea name="content" id="input" class="form-control" rows="3" required="required"></textarea><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>

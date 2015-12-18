@@ -121,7 +121,7 @@ module.exports = function(App) {
         if(mm<10){
             mm='0'+mm
         } 
-        let date = dd+'/'+mm+'/'+yyyy;
+        let date = mm+'/'+dd+'/'+yyyy;
 
         // Hash
         if(hash) {
@@ -300,7 +300,6 @@ module.exports = function(App) {
         req.session.username
       )
     ]).then(function(docs) {
-      debug(docs[2])
       if(docs[0] == true) {
         res.render('profile', {
           'auth_type': req.auth_type,
@@ -364,5 +363,58 @@ module.exports = function(App) {
         debug(err);
         res.redirect('/');
       });
+  });
+
+  // Store Route
+  App.Express.get('/store', function(req, res) {
+    res.render('store', {'auth_type': req.auth_type});
+  });
+
+  // Updates Page
+  App.Express.get('/updates', function(req, res) {
+    App.db.updates.find(function(err, docs) {
+      if(!err) {
+        res.render('updates', {'auth_type': req.auth_type, 'updates': docs});
+      } else {
+        debug(err);
+        res.redirect('/');
+      }
+    });
+  });
+
+  // Staff Page
+  App.Express.get('/staff', function(req, res) {
+    App.db.staff.find(function(err, docs) {
+      if(!err) {
+        let newDocs = [{'rank': 'Owner'},{'rank': 'Developers'},{'rank': 'Administrators'},{'rank': 'Moderators'}];
+
+        for (var i = 0; i < docs.length; i++) {
+          debug(docs[i].rank);
+          switch(docs[i].rank) {
+            case 'Owner':
+              newDocs[0].staff = docs[i].staff
+              break;
+            case 'Administrators':
+              newDocs[2].staff = docs[i].staff
+              break;
+            case 'Developers':
+              newDocs[1].staff = docs[i].staff
+              break;
+            case 'Moderators':
+              newDocs[3].staff = docs[i].staff
+              break;
+            default:
+              newDocs.push(docs[i]);
+              break;
+          }
+        }; 
+        debug(newDocs)
+        res.render('staff', {'auth_type': req.auth_type, 'ranks': newDocs});
+
+      } else {
+        debug(err);
+        res.redirect('/');
+      }
+    });
   });
 };

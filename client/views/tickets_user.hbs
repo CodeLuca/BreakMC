@@ -1,0 +1,37 @@
+
+<div class="jumbotron" style=''>
+  <h1>BreakMC Tickets & Applications</h1>
+  <p>Reply to your tickets and make new ones! Create moderator and youtuber applicatons or report a bug you found or an evil xrayer  😈.</p>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Replies</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each tickets}}
+      {{#if replies}}
+        <tr class='ticketTable warning' onclick='document.location = "/tickets/view/{{id}}"'>
+      {{else}}
+        <tr class='ticketTable danger' onclick='document.location = "/tickets/view/{{id}}"'>
+      {{/if}}
+        <td>
+          <img src="https://minotar.net/avatar/{{user}}" alt="Luca" style='width:25px;height:25px;padding-right: 2px;'/>
+          <a href='/profile/{{user}}'>{{user}}</a>
+        </td>
+        <td>{{type}}</td>
+        <td>{{date}}</td>
+        <td>{{status}}</td>
+        <td>{{replies.length}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<a href='/tickets/new'><button type="button" class="btn btn-info newThread">New Ticket</button></a>

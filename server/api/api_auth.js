@@ -123,6 +123,7 @@ class auth {
   /**
    * @func makeAdmin
    * @param {String}
+   * @param {String} Return boolean or text?
    */
   makeAdmin(user) {
     debug('changing user perms');

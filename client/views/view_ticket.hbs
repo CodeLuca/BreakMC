@@ -1,38 +1,91 @@
-<div class='jumbotron view_ticket'>
-  <h1>{{ticket.user}}'s {{ticket.type}} Ticket:</h1>
-  <ul>
-    <li><b>Date: </b> {{ticket.date}}</li>
-    <li><b>Status: </b> {{ticket.status}}</li>
-    <li><b>Ticket ID: </b> {{ticket.id}}</li>
-  </ul>
+<div class='view_xray no_display jumbotron' style='font-size: 20px; backgound: null;'>
+    <h1>{{ticket.user}}'s {{ticket.type}} Ticket:</h1>
+    <ul>
+        <li><b>Date: </b> {{ticket.date}}</li>
+        <li><b>Status: </b> {{ticket.status}}</li>
+        <li><b>Ticket ID: </b> {{ticket.id}}</li>
+        <li><b>World:</b> {{ticket.content.world}}</li>
+        <li><b>Coordinates:</b>
+            <br>
+            <b>X:</b> {{ticket.content.x}} 
+            <b>Y:</b> {{ticket.content.y}} 
+            <b>Z:</b> {{ticket.content.z}}
+        </li>
+        <li><b>Players With Warp:</b> {{ticket.content.playersWithAccess}}</li>
+    </ul>
 </div>
 
-<br>
-
-<div class='view_xray no_display'>
-  {{ticket.type}}
+<div class='view_bug no_display jumbotron' style='font-size: 20px;'>
+    <h1>{{ticket.user}}'s Bug Report:</h1>
+    <ul>
+        <li><b>Date: </b> {{ticket.date}}</li>
+        <li><b>Status: </b> {{ticket.status}}</li>
+        <li><b>Ticket ID: </b> {{ticket.id}}</li>
+        <li><b>Bug Information:</b> {{ticket.content.body}}</li>
+    </ul>
 </div>
 
-<div class='view_youtube no_display'>
-  {{ticket.type}}
+<div class='view_youtube no_display jumbotron' style='font-size: 20px;'>
+    <h1>{{ticket.user}}'s Youtube Rank Application:</h1>
+    <ul>
+        <li><b>Date: </b> {{ticket.date}}</li>
+        <li><b>Status: </b> {{ticket.status}}</li>
+        <li><b>Ticket ID: </b> {{ticket.id}}</li>
+        <li><b>Channel:</b> <a href='{{ticket.content.channel}}'>{{ticket.content.channel}}</a></li>
+        <li><b>Videos:</b> {{ticket.content.videos}}</li>
+    </ul>
 </div>
 
-<div class='view_mod no_display'>
-  {{ticket.type}}
+<div class='view_mod no_display jumbotron' style='font-size: 20px;'>
+    <h1>{{ticket.user}}'s Moderator Rank App:</h1>
+    <ul>
+        <li><b>Date: </b> {{ticket.date}}</li>
+        <li><b>Status: </b> {{ticket.status}}</li>
+        <li><b>Ticket ID: </b> {{ticket.id}}</li>
+        <li><b>Age:</b> {{ticket.content.age}}</li>
+        <li><b>Timezone:</b> {{ticket.content.timezone}}</li>
+        <li><b>Skype:</b> {{ticket.content.skype}}</li>
+        <li><b>Experience:</b> {{ticket.content.experience}}</li>
+        <li><b>Additional Information:</b> {{ticket.content.aditionalInfo}}</li>
+    </ul>
 </div>
 
 <script type="text/javascript">
     var type = '{{ticket.type}}';
-    switch(type) {
-      case 'xray':
-        $('.view_xray').show()
-        break;
-      case 'youtube':
-        $('.view_youtube').show()
-        break;
-      case 'moderator':
-        $('.view_mod').show()
-        break;
+    switch (type) {
+        case 'xray':
+            $('.view_xray').show()
+            break;
+        case 'youtube':
+            $('.view_youtube').show()
+            break;
+        case 'moderator':
+            $('.view_mod').show()
+            break;
+        case 'bug':
+            $('.view_bug').show()
+            break;
     }
-    console.log(type);
 </script>
+
+<div class='repliesContainer'>
+{{#each ticket.replies}}
+  <div style='margin-top: 20px;'>
+    <img src="https://minotar.net/avatar/{{user}}" alt="Luca" style='width:25px;height:25px;'/>
+    <b><a href='/profile/{{user}}'>{{user}}</a></b>: {{content}}
+  </div>
+{{/each}}
+</div>
+
+<br>
+
+<form action="/ticket/reply/{{ticket.id}}" method="POST" role="form" style='display: inline'>
+  <div class="form-group">
+    <textarea name="content" id="input" class="form-control" rows="3" required="required" placeholder='Reply to this ticket.' style='resize: none;'></textarea>
+  </div>
+  <button type="submit" class="btn btn-sm btn-default" style='background: #455B7A; border: none;'>Submit</button>
+</form>
+
+<form action='/ticket/resolve/{{ticket.id}}' method='POST' style='display: inline'>
+    <button type="submit" class="btn btn-sm btn-default" style='background: #455B7A; border: none;'>Resolve / Delete</button>
+</form>

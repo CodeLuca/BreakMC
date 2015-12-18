@@ -12,7 +12,7 @@ module.exports = function(App) {
 
     db_path: 'mongodb://localhost:27017/breakmc',
 
-    db_collections: ['users', 'threads', 'utils', 'tickets'],
+    db_collections: ['users', 'threads', 'utils', 'tickets', 'staff', 'updates'],
 
     /**
      * The port that the app will run on.

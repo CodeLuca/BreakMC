@@ -8,6 +8,7 @@
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="/css/base.css">
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -24,12 +25,15 @@
 
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="/forum">Forum</a></li>
-      <li><a href="/tickets">Tickets</a></li>
+      <li><a href="/forum">Forum <i class="fa fa-comment" style='padding-left: 2px;padding:0.35em'></i></a></li>
+      <li><a href="/tickets">Tickets & Applications <i class="fa fa-pencil" style='padding-left: 2px;padding:0.35em'></i></a></li>
+      <li><a href="/updates">Updates <i class="fa fa-exclamation" style='padding-left: 2px;padding:0.35em'></i></a></li>
+      <li><a href="/staff">Staff <i class="fa fa-trophy" style='padding-left: 2px;padding:0.35em'></i></a></li>
+      <li><a href="/store">Store <i class="fa fa-shopping-cart" style='padding-left: 2px;padding:0.35em'></i></a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right" style='padding: 0; margin: 0;'>
-      <li><a href="/profile">My Profile</a></li>
+      <li><a href="/profile">My Profile <i class="fa fa-user" style='padding-left: 2px;padding:0.35em'></i></a></li>
       <li><a href="/{{auth_type}}">{{auth_type}}</a></li>
     </ul>
   </div>

@@ -1,0 +1,18 @@
+<div class="jumbotron" style=''>
+  <h1>Updates</h1>
+  <p>Here are updates from the staff at BreakMC. We will release updates on a regular basis to keep everyone updated!</p>
+</div>
+
+{{#unless updates}}
+  <h1>No updates here yet</h1>
+{{/unless}}
+
+{{#each updates}}
+
+  <h2><b>{{title}}</b></h2>
+  <h5 style='color: #3DAE8B'><b>Published on: {{date}} - by: {{user}}</b></h5>
+  <hr style='width: 100%; border-top: 1px solid #242F3F;'>
+  {{content}}
+
+  <br><br><br><br>
+{{/each}}

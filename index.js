@@ -18,6 +18,7 @@ debug('Server started');
  * Run express dependency on alias.
  * @see {@link http://expressjs.com/4x/api.html}
  */
+
 const express = require('express');
 App.Express = express();
 debug('Express dependency loaded.');

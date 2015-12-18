@@ -3,22 +3,29 @@
   <p>BreakMC uses the ticket system for xray reports, applications and more! Go ahead and make a ticket if you need any help with anything.</p>
 </div>
 
-<form action='' method='post'>
-  <label for='ticketType'>Type:</label>
-  <select class="form-control" id="ticketType" name='type'>
+  <label for='ticketType'>Ticket Type:</label>
+  <select class="form-control ticketType" name='type'>
     <option value='select_type'>Select a Type</option>
     <option value='xray'>Xray</option>
+    <option value='bug'>Bug Report</option>
+  </select>
+
+    <br> 
+
+  <label for='ticketType'>Application Type:</label>
+    <select class="form-control ticketType" name='type'>
+    <option value='select_type'>Select a Type</option>
     <option value='youtube'>YouTube Application</option>
     <option value='moderator'>Moderator Application</option>
   </select>
  
   <br>
 
-  <div class='select_type'></div>
-
   <div class="ticket xray">
     <form action="" method="POST" role="form">
       <legend>Xray Ticket</legend>
+
+      <input type='text' name='type' style='display: none;' value='xray' />
     
       <div class="form-group">
 
@@ -38,7 +45,7 @@
               Z:  <input class='form-control' type="number" name="z" min="-10000" max="10000"> 
           </div>
 
-          <br><br>
+          <br>
 
           <label for='playersWithAccess'>Players with access to warp: </label>
           <input type="text" name="playersWithAccess" class="form-control" required="required" >
@@ -48,13 +55,52 @@
     </form>
   </div>
 
-  <div class="ticket youtube">
+  <div class="ticket bug">
     <form action="" method="POST" role="form">
-      <legend>YouTube Application</legend>
-    
+      <legend>Bug Reports</legend>
+
+      <input type='text' name='type' style='display: none;' value='bug' />
+
       <div class="form-group">
-        <label for="">label</label>
-        <input type="text" class="form-control" id="" placeholder="Input field">
+        <label>Bug Information:</label>
+        <textarea name="body" id="inputContent" class="form-control" rows="3" required="required"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <div class="ticket youtube">
+    <div class='youtubeInfo'>
+      <div style='padding-right: 50px; text-align: left'>
+        <h3>YouTube Rank Requirements:</h3>
+        <p>2,000 Subscribers.</p>
+        <p>1 video uploaded on any of our servers.</p>
+        <p>At least 500 views on the said video.</p>
+      </div>
+
+      <div>
+        <h3><b>YouTube+</b> Rank Requirements:</h3>
+        <p>3,500 Subscribers.</p>
+        <p>2 videos uploaded on any of our servers.</p>
+        <p>At least 1,000 views on the said videos.</p>
+      </div>
+    </div>
+
+    <br>
+
+    <form action="" method="POST" role="form">
+
+      <input type='text' name='type' style='display: none;' value='youtube' />
+
+      <div class="form-group">
+        <label for="">Channel URL</label>
+        <input type="text" class="form-control" name='channel'>
+        
+        <br>
+
+        <label for="">BreakMC Videos (Separate with a Space)</label>
+        <input type="text" class="form-control" name='videos'>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>
@@ -65,9 +111,48 @@
     <form action="" method="POST" role="form">
       <legend>Moderator Application</legend>
     
+      <input type='text' name='type' style='display: none;' value='moderator' />
+
       <div class="form-group">
-        <label for="">label</label>
-        <input type="text" class="form-control" id="" placeholder="Input field">
+        <label for="">Age:</label>
+        <input type="text" class="form-control" name="age">
+
+        <br>
+
+       <label for="">Timezone:</label>
+        <input type="text" class="form-control" name="timezone">
+
+        <br>
+
+       <label for="">Skype:</label>
+        <input type="text" class="form-control" name="skype">
+
+        <br>     
+         <label for="">Server:</label>
+          <select name="server" class='form-control form-inline'>
+              <option selected value="AdvancedPvP">
+                  AdvancedPvP
+              </option>
+              <option value="EliteKits">
+                  EliteKits
+              </option>
+              <option value="PracticePots">
+                  PracticePots
+              </option>
+              <option value="MC-HCF">
+                  MCHCF
+              </option>
+          </select>
+
+        <br>
+
+        <label for="">Experience:</label>
+        <textarea name="experience" class="form-control" rows="3" required="required" style='resize: none;'></textarea>
+
+        <br>
+
+       <label for="">Aditional Information:</label>
+        <textarea name="aditionalInfo" class="form-control" rows="3" required="required" style='resize: none;'></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

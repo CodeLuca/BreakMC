@@ -7,13 +7,13 @@ a:hover {
 }
 
 .jumbotron {
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url(bg.png) repeat 0 0, url('/assets/jumboback2.jpg') repeat 0 0;
-    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.6)), color-stop(100%, rgba(255, 255, 255, 0.6))), url('/assets/jumboback2.jpg') repeat 0 0;
-    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
-    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
-    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.77) 100%), url(bg.png) repeat 0 0, url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.77) 0%, rgba(255, 255, 255, 0.77) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255, 255, 255, 0.77)), color-stop(100%, rgba(255, 255, 255, 0.77))), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.77) 0%, rgba(255, 255, 255, 0.77) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -o-linear-gradient(top, rgba(255, 255, 255, 0.77) 0%, rgba(255, 255, 255, 0.77) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0.77) 0%, rgba(255, 255, 255, 0.77) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.77) 0%, rgba(255, 255, 255, 0.77) 100%), url('/assets/jumboback2.jpg') repeat 0 0;
     background-size: cover;
     background-position: center;
 }
@@ -190,7 +190,9 @@ hr {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+}
+.adminUserPanelContainer form {
+  margin-right: 5%;
 }
 
 .viewTicketContainer {
@@ -220,6 +222,46 @@ hr {
   font-size: 25px;
 }
 
+.youtubeInfo {
+  display: flex;
+  justify-content: center;
+}
+
 .no_display {
   display: none;
+}
+
+.homeinfo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.homeinfo .panel {
+  display: inline-block;
+  width: 23%;
+  margin: 10px;
+  vertical-align: top;
+}
+
+@media (max-width: 1200px) {
+  .homeinfo .panel {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .homeinfo .panel {
+    width: 100%;
+  }
+}
+.staffContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.staff {
+  text-align: center;
+  margin-right: 20px;
 }

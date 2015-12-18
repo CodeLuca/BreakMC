@@ -82,6 +82,62 @@ class tickets {
       });
     });
   }
+
+
+  ticketPermission(username, id) {
+    debug('is user authorized to see ticket?');
+
+    let self = this;
+
+    return new Promise(function(resolve, reject) {
+      Promise.all([
+        self.getSingleTicket(id),
+        App.api.auth.isAdmin(username, true)
+        ]).then(function(docs) {
+          if(docs[0][0].user == username) {
+            resolve(true);
+          } else {
+            if(docs[1] == true) {
+              resolve(true);
+            } else {
+              resolve(false);
+            }
+          }
+        }, function(err) {
+          reject(new Error(err));
+        });
+    });
+  }
+
+
+  // Reply to Ticket
+  reply(req) {
+    debug('attempting to reply to ticket.');
+
+    return new Promise(function(resolve, reject) {
+
+      App.db.tickets.update({
+        'id': req.params.id
+      }, {
+        $push: {
+          'replies': {
+            'user': req.session.username,
+            'content': req.body.content
+          }
+        },
+        $set: {
+          'status': 'read'
+        }
+      }, function(err, docs) {
+        if(!err) {
+          resolve(docs);
+        } else {
+          reject(err);
+        }
+      });
+
+    });
+  }
 };
 
 module.exports = tickets;
