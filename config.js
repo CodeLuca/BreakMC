@@ -18,7 +18,7 @@ module.exports = function(App) {
      * The port that the app will run on.
      * @type {number}
      */
-    port: 3000,
+    port: 80,
 
     /**
      * The cost of encrypting data.
