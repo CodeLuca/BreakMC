@@ -3,6 +3,7 @@
 'use strict';
 
 var bodyParser = require('body-parser');
+
 global.App = {};
 
 // TODO: put this in config.

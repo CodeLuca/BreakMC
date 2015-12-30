@@ -185,16 +185,28 @@ module.exports = function(App) {
     App.api.auth.isAdmin(req.session.username, true)
       .then(function(auth) {
         if(auth) {
-          App.db.staff.remove({
-            'user': req.body.user
-          }, function(err, docs) {
-            if(!err) {
-              res.redirect('/staff');
+          App.db.staff.find({
+            'staff': {
+              'user': req.body.user
+            }
+          }, function(err, docs) { 
+            if(docs[0]) {
+              App.db.staff.update({
+                'rank': docs[0].rank
+              }, {
+                $pull: {
+                  'staff': {
+                    'user': req.body.user
+                  }
+                }
+              }, function(err) {
+                res.redirect('/staff');
+              });
+
             } else {
-              debug(err);
               res.redirect('/');
             }
-          })
+          });
         } else {
           res.redirect('/login');
         }

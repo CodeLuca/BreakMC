@@ -54,10 +54,7 @@ a:hover {
 /* Forum buttom */
 
 .newThread {
-    z-index: 2;
-    margin-bottom: 50px;
-    position: fixed;
-    bottom: 0;
+  margin: 10px;
 }
 
 

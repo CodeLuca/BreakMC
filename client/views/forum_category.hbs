@@ -4,6 +4,9 @@
   <p>Interact with the staff of the BreakMC network, suggest new ideas and more on the new BreakMC Forums. Make sure to Register in order to post threads!</p>
 </div>
 
+{{#if auth_bool}}
+  <a href='/forum/new'><button type="button" class="btn btn-info newThread">New Thread</button></a>
+{{/if}}
 
 <table class="table table-forum">
   {{#unless threads}}
@@ -45,7 +48,3 @@
     {{/each}}
   </tbody>
 </table>
-
-{{#if auth_bool}}
-  <a href='/forum/new'><button type="button" class="btn btn-info newThread">New Thread</button></a>
-{{/if}}

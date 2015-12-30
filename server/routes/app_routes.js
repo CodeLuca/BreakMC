@@ -44,7 +44,6 @@ module.exports = function(App) {
       'type': 'category'
     }, function(err, docs) {
       if(!err) {
-        debug(docs);
         res.render('forum', {
             'auth_type': req.auth_type,
             'auth_bool': req.auth_bool,

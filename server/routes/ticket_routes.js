@@ -17,7 +17,6 @@ module.exports = function(App) {
       res.redirect('/register');
       return;
     }
-
     App.api.auth.isAdmin(req.session.username, true)
       .then(function(doc) {
         if(doc == true) {

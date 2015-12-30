@@ -25,6 +25,6 @@ module.exports = function(App) {
      * @type {number}
      * @see {@link https://github.com/ncb000gt/node.bcrypt.js/#a-note-on-rounds}
      */
-    encrypt_rounds: 10,
+    encrypt_rounds: 12,
   };
 };
